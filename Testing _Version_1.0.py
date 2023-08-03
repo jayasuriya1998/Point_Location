@@ -55,7 +55,7 @@ else:
     
     # Display the result
     cv2.imshow('Custom Keypoints using SIFT', img3)
-    cv2.circle(img2,(72,106),2,(0,0,255),-1)
+    cv2.circle(img2,(round(x2),round(y2)),2,(0,0,255),-1)
     cv2.imshow('Testing', img2)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
