@@ -38,14 +38,24 @@ if matches is None:
 else:
     print("found")
     matches = sorted(matches, key = lambda x:x.distance)
-    print(matches[:])
-
+    mat= matches[0]
+    img1_idx = mat.queryIdx
+    img2_idx = mat.trainIdx
+    #print(img1_idx,img2_idx)
+    (x1, y1) = kp1[img1_idx].pt
+    (x2, y2) = kp2[img2_idx].pt
+    print(f'x1 is {x1} y1 is {y1} ')
+    print(f'x2 is {x2} y2 is {y2} ')
+    #cv2.circle(frame,center_position,2,(0,0,255),-1)
 
     ### Draw custom keypoints on the image
     ##img_kp = cv2.drawKeypoints(img1, kp1, None, flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
     img3 = cv2.drawMatches(gray1,kp1,gray2,kp2,matches[:1],gray2, flags=2)
     
+    
     # Display the result
     cv2.imshow('Custom Keypoints using SIFT', img3)
+    cv2.circle(img2,(72,106),2,(0,0,255),-1)
+    cv2.imshow('Testing', img2)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
